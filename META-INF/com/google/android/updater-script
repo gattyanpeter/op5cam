@@ -1,0 +1,9 @@
+ui_print("Flashable OxygenOS Camera ZIP for the OP5");
+package_extract_dir("system", "/system");
+ui_print("Setting permissions...");
+set_metadata_recursive("/system/lib", "uid", 0, "gid", 0, "dmode", 0755, "fmode",0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+set_metadata_recursive("/system/lib64", "uid", 0, "gid", 0, "dmode", 0755, "fmode",0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+set_metadata_recursive("/system/vendor/lib", "uid", 0, "gid", 0, "dmode", 0755, "fmode",0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+unmount("/system");
+ui_print(" ");
+ui_print("Done!");
