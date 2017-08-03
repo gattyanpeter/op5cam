@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
-zip -0 -ur OOS_Camera_OP5_Flashable_v0.1.zip . -x ".git/*" "zip.bash" ".gitignore"
+VERSION=OOS_Camera_OP5_Flashable_v0.2
+zip -0 -ur ${VERSION}.zip . -x ".git/*" "zip.bash" ".gitignore"
