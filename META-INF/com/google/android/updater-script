@@ -1,5 +1,8 @@
 ui_print("Flashable OxygenOS Camera ZIP for the OP5");
-mount("ext4", "EMMC", "/dev/block/bootdevice/by-name/system", "system");
+ifelse(is_mounted("/system"), unmount("/system"));
+mount("ext4", "EMMC", "/dev/block/bootdevice/by-name/system", "/system", "");
+ui_print("Extracting files...");
+show_progress(0.90000, 2);
 package_extract_dir("system", "/system");
 ui_print("Setting permissions...");
 set_metadata_recursive("/system/lib", "uid", 0, "gid", 0, "dmode", 0755, "fmode",0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
@@ -7,4 +10,5 @@ set_metadata_recursive("/system/lib64", "uid", 0, "gid", 0, "dmode", 0755, "fmod
 set_metadata_recursive("/system/vendor/lib", "uid", 0, "gid", 0, "dmode", 0755, "fmode",0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
 set_metadata_recursive("/system/vendor/lib64", "uid", 0, "gid", 0, "dmode", 0755, "fmode",0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
 unmount("system");
+set_progress(1.000000);
 ui_print("Done!");
